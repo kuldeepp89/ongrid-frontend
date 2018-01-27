@@ -1,0 +1,22 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.book{
+	height: 300px;
+	margin-top: 7px;
+	padding: 5px;
+	overflow-y: scroll;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.book::-webkit-scrollbar { width:10px;background-color:#cccccc; } 
+.book::-webkit-scrollbar-thumb { background-color:grey;border-radius:10px; }
+.book::-webkit-scrollbar-thumb:hover { background-color:#BF4649;border:1px solid #333333; }
+.book::-webkit-scrollbar-thumb:active { background-color:#A6393D;border:1px solid #333333; } 
+
+#logout: {
+	margin-top: 8px;
+}

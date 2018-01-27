@@ -1,0 +1,32 @@
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Ongrid Solutions</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right">
+            
+            <button type="submit" class="btn btn-success" (click) = "logout()">Logout</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+      	<div class="row">
+      		<div class="col-md-3">
+	      		<img [src]="bookDetails?.volumeInfo.imageLinks.thumbnail">
+	      			
+	      	</div>
+	      	<div class="col-md-9">
+	      	<h1>{{bookDetails?.volumeInfo?.title}}</h1>
+	      		
+	      	</div>
+      	</div>
+      	<h2>Authors: {{bookDetails?.volumeInfo?.authors}}</h2>
+        <p>Description: kd{{bookDetails?.volumeInfo?.description}}</p>
+        <p><a class="btn btn-primary btn-lg" href="" role="button">Buy Now &raquo;</a></p>
+      </div>
+    </div>

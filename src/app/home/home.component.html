@@ -1,0 +1,42 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">			
+			<a class="navbar-brand" href="">Welcome  {{displayName}}</a>
+		</div>
+		<div class="col-md-2">
+		
+		</div>
+		<div id="navbar" class="col-md-4 col-md-offset-4 navbar-collapse collapse">
+			<form class="navbar-form">
+				<div class="form-group">
+					<input type="text" name ="searchQuery"[(ngModel)] = "searchQuery" placeholder="Search book here" class="form-control">
+				</div>
+
+				<button type="submit" (click) = "searchBooks()"class="btn btn-success">Search</button>
+			</form>
+			
+		</div><!--/.navbar-collapse -->
+		<button id="logout"(click) = "logout()" class="btn btn-success navbar-right" style="margin-top: 8px">Logout</button>
+	</div>
+</nav>
+
+<div class="container">
+	<!-- Example row of columns -->
+	<div *ngIf="!bookList.items" class="row col-md-5 col-md-offset-3" style="margin-top: 50px">
+		<h1> You books will appear here</h1>
+	</div>
+	<div class="row" style="margin-top: 50px">
+		<div class="col-md-4 book" *ngFor="let book of bookList.items">
+			<h2>{{book?.volumeInfo?.title || "No Title"}}</h2>
+			<div class="col-md-6">
+				
+				<img [src]="book?.volumeInfo?.imageLinks?.thumbnail
+					" style="cursor: pointer;" (click)="getDetails(book.id)">				
+			</div>
+			<div class="col-md-6">
+				<h3> By: {{ book?.volumeInfo?.authors || "No Author"}}</h3>
+			</div>
+			<p>{{book?.volumeInfo?.description || "No Description"}} </p>			
+		</div>
+	</div>           
+</div> <!-- /container -->

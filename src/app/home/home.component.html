@@ -3,10 +3,7 @@
 		<div class="navbar-header">			
 			<a class="navbar-brand" href="">Welcome  {{displayName}}</a>
 		</div>
-		<div class="col-md-2">
-		
-		</div>
-		<div id="navbar" class="col-md-4 col-md-offset-4 navbar-collapse collapse">
+		<div id="navbar" class="col-md-4 col-md-offset-4">
 			<form class="navbar-form">
 				<div class="form-group">
 					<input type="text" name ="searchQuery"[(ngModel)] = "searchQuery" placeholder="Search book here" class="form-control">
@@ -26,15 +23,20 @@
 		<h1> You books will appear here</h1>
 	</div>
 	<div class="row" style="margin-top: 50px">
-		<div class="col-md-4 book" *ngFor="let book of bookList.items">
+		<div class="col-md-4 book" *ngFor="let book of bookList.items; let i = index">
 			<h2>{{book?.volumeInfo?.title || "No Title"}}</h2>
-			<div class="col-md-6">
-				
+			<div class="col-md-6">				
 				<img [src]="book?.volumeInfo?.imageLinks?.thumbnail
 					" style="cursor: pointer;" (click)="getDetails(book.id)">				
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-6" style="padding-left: 0px;">
 				<h3> By: {{ book?.volumeInfo?.authors || "No Author"}}</h3>
+				<div> 
+					<span *ngIf="!book.isBookmarked" >Bookmark this:</span>  
+					<span *ngIf="book.isBookmarked">Bookmarked:</span>
+					<img [src]='book.isBookmarked? bookmarkedImage:bookmarkImage' style="height: 50px;width: 50px; cursor: pointer" (click)="toggleBookmark(book.isBookmarked, book.id, i)">
+				</div> 
+				
 			</div>
 			<p>{{book?.volumeInfo?.description || "No Description"}} </p>			
 		</div>

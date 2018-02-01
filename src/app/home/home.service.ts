@@ -13,4 +13,10 @@ export class HomeService {
 	searchBooks(bookName: string){
 		return this.http.get(this.url+"?q="+bookName).map((response: Response) => response.json());
 	}
+
+	makeBookmark(bookId: string){
+		let book = new URLSearchParams();		
+		book.set('book', bookId);
+		return this.http.post("/make/bookmark", {search: book}).map((response: Response) => response.json());
+	}
 }
